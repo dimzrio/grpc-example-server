@@ -1,0 +1,25 @@
+syntax = "proto3";
+package model;
+option go_package="model";
+
+message halloReq{
+    string firstName = 1;
+    string lastName = 2;
+}
+
+message halloResp{
+    string fullname = 1;
+}
+
+message infoReq {
+    string name = 1;
+}
+
+message infoResp {
+    string details = 1;
+}
+
+service personalService {
+    rpc sayHello (halloReq) returns (halloResp);
+    rpc detailsInfo (infoReq) returns (infoResp);
+}
