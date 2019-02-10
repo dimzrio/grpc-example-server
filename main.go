@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/dimzrio/grpc-courses/example/nginx-grpc/model"
+	"github.com/dimzrio/grpc-example-server/model"
 )
 
 const (
