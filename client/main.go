@@ -8,12 +8,19 @@ import (
 	"github.com/dimzrio/grpc-example-server/model"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
 )
 
 func main() {
 	log.Println("*** gRCP Client ***")
 
-	conn, _ := grpc.Dial("localhost:8080", grpc.WithInsecure())
+	cred, err := credentials.NewClientTLSFromFile("../ssl/ca.crt", "")
+
+	if err != nil {
+		log.Fatalf("Found Credentials Error : %v\n", err)
+	}
+
+	conn, _ := grpc.Dial("localhost:8080", grpc.WithTransportCredentials(cred))
 
 	grpcClient := model.NewPersonalServiceClient(conn)
 
